@@ -1,6 +1,7 @@
 import app from './server.js';
 import mongoose from 'mongoose';
 import dotenv from "dotenv";
+import ProfilesModel from './model/profiles.js';
 
 async function main() {
     dotenv.config();
