@@ -5,7 +5,7 @@ export default class ProfilesDAO {
     static async getProfileById(id) {
         try {
 
-            return ProfilesModel.findOne({id: 1});
+            return ProfilesModel.findOne({id: id});
 
         } catch (e) {
             console.error(`Something went wrong in getProfileById: ${e}`);
@@ -69,7 +69,15 @@ export default class ProfilesDAO {
         try {
 
             const filter = { id: requestBody.id };
-            const update = { name: requestBody.name };
+            const update = { 
+                name: requestBody.name,
+                date_of_birth: requestBody.dob,
+                location: requestBody.location,
+                about: requestBody.about == undefined ? "" : requestBody.about,
+                interests: requestBody.interests == undefined ? "" : requestBody.interests,
+                team: requestBody.team,
+                gender: requestBody.gender
+            };
 
             // `doc` is the document _before_ `update` was applied
             let doc = await ProfilesModel.findOneAndUpdate(filter, update);
