@@ -8,6 +8,7 @@ const profileSchema = new Schema({
   gender: String,
   location: String,
   sports: [String],
+  team: String,
   about: String,
   interests: String,
   createdAt: Date,

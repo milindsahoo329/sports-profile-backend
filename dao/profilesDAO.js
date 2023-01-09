@@ -35,7 +35,14 @@ export default class ProfilesDAO {
             let randomId = (Math.random() + 1).toString(36).substring(7) + Date.now();;
 
             var profile = new ProfilesModel({ 
-                name: requestBody.name, id: randomId
+                name: requestBody.name, 
+                id: randomId,
+                date_of_birth: requestBody.dob,
+                location: requestBody.location,
+                about: requestBody.about == undefined ? "" : requestBody.about,
+                interests: requestBody.interests == undefined ? "" : requestBody.interests,
+                team: requestBody.team,
+                gender: requestBody.gender
             });
 
             await profile.save((err, profile) => {
